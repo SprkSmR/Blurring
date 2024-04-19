@@ -87,16 +87,113 @@ int main()
 
     for (int i = 0; i < alto; i++) {
       for (int j = 0; j < ancho*3; j+=3) {
-        b_temp = ptr[((i+mask%2-1)*(ancho+(mask%2-1)*2)*3)+((j+mask%2)*3)];
+        b_temp = ptr[((i+mask%2-1)*(ancho+(mask%2)*2)*3)+((j+mask%2-1)*3)]/9;
         b_mean[0] = b_temp;
 
+        b_temp = ptr[((i+mask%2-1)*(ancho+(mask%2)*2)*3)+((j+mask%2+1)*3)]/9;
+        b_mean[1] = b_temp;
+
+        b_temp = ptr[((i+mask%2-1)*(ancho+(mask%2)*2)*3)+((j+mask%2)*3)]/9;
+        b_mean[2] = b_temp;
+
+        b_temp = ptr[((i+mask%2+1)*(ancho+(mask%2)*2)*3)+((j+mask%2-1)*3)]/9;
+        b_mean[3] = b_temp;
+
+        b_temp = ptr[((i+mask%2+1)*(ancho+(mask%2)*2)*3)+((j+mask%2+1)*3)]/9;
+        b_mean[4] = b_temp;
+
+        b_temp = ptr[((i+mask%2+1)*(ancho+(mask%2)*2)*3)+((j+mask%2)*3)]/9;
+        b_mean[5] = b_temp;
+
+        b_temp = ptr[((i+mask%2)*(ancho+(mask%2)*2)*3)+((j+mask%2-1)*3)]/9;
+        b_mean[6] = b_temp;
+
+        b_temp = ptr[((i+mask%2)*(ancho+(mask%2)*2)*3)+((j+mask%2+1)*3)]/9;
+        b_mean[7] = b_temp;
+
+        b_temp = ptr[((i+mask%2)*(ancho+(mask%2)*2)*3)+((j+mask%2)*3)]/9;
+        b_mean[8] = b_temp;
+
         
-        b_temp = ptr[((i+mask%2)*(ancho+(mask%2)*2)*3)+((j+mask%2)*3)];
-        g_temp = ptr[((i+mask%2)*(ancho+(mask%2)*2)*3)+((j+mask%2)*3)]; 
-        r_temp = ptr[((i+mask%2)*(ancho+(mask%2)*2)*3)+((j+mask%2)*3)]; 
-        fputc(ptr[((i+mask%2)*(ancho+(mask%2)*2)*3)+((j+mask%2)*3)], outputImage);
-        fputc(ptr[((i+mask%2)*(ancho+(mask%2)*2)*3)+((j+mask%2)*3)+1], outputImage);
-        fputc(ptr[((i+mask%2)*(ancho+(mask%2)*2)*3)+((j+mask%2)*3)+2], outputImage);
+
+
+
+
+
+        g_temp = ptr[((i+mask%2-1)*(ancho+(mask%2)*2)*3)+((j+mask%2-1)*3) + 1]/9;
+        g_mean[0] = g_temp;
+
+        g_temp = ptr[((i+mask%2-1)*(ancho+(mask%2)*2)*3)+((j+mask%2+1)*3) + 1]/9;
+        g_mean[1] = g_temp;
+
+        g_temp = ptr[((i+mask%2-1)*(ancho+(mask%2)*2)*3)+((j+mask%2)*3) + 1]/9;
+        g_mean[2] = g_temp;
+
+        b_temp = ptr[((i+mask%2+1)*(ancho+(mask%2)*2)*3)+((j+mask%2-1)*3) + 1]/9;
+        b_mean[3] = g_temp;
+
+        g_temp = ptr[((i+mask%2+1)*(ancho+(mask%2)*2)*3)+((j+mask%2+1)*3) + 1]/9;
+        g_mean[4] = g_temp;
+
+        g_temp = ptr[((i+mask%2+1)*(ancho+(mask%2)*2)*3)+((j+mask%2)*3) + 1]/9;
+        g_mean[5] = g_temp;
+
+        g_temp = ptr[((i+mask%2)*(ancho+(mask%2)*2)*3)+((j+mask%2-1)*3) + 1]/9;
+        g_mean[6] = g_temp;
+
+        g_temp = ptr[((i+mask%2)*(ancho+(mask%2)*2)*3)+((j+mask%2+1)*3) + 1]/9;
+        g_mean[7] = g_temp;
+
+        g_temp = ptr[((i+mask%2)*(ancho+(mask%2)*2)*3)+((j+mask%2)*3) + 1]/9;
+        g_mean[8] = g_temp;
+
+
+
+
+
+
+
+
+        r_temp = ptr[((i+mask%2-1)*(ancho+(mask%2)*2)*3)+((j+mask%2-1)*3) + 2]/9;
+        r_mean[0] = r_temp;
+
+        r_temp = ptr[((i+mask%2-1)*(ancho+(mask%2)*2)*3)+((j+mask%2+1)*3) + 2]/9;
+        r_mean[1] = r_temp;
+
+        r_temp = ptr[((i+mask%2-1)*(ancho+(mask%2)*2)*3)+((j+mask%2)*3) + 2]/9;
+        r_mean[2] = r_temp;
+
+        r_temp = ptr[((i+mask%2+1)*(ancho+(mask%2)*2)*3)+((j+mask%2-1)*3) + 2]/9;
+        r_mean[3] = r_temp;
+
+        r_temp = ptr[((i+mask%2+1)*(ancho+(mask%2)*2)*3)+((j+mask%2+1)*3) + 2]/9;
+        r_mean[4] = r_temp;
+
+        r_temp = ptr[((i+mask%2+1)*(ancho+(mask%2)*2)*3)+((j+mask%2)*3) + 2]/9;
+        r_mean[5] = r_temp;
+
+        r_temp = ptr[((i+mask%2)*(ancho+(mask%2)*2)*3)+((j+mask%2-1)*3) + 2]/9;
+        r_mean[6] = r_temp;
+
+        r_temp = ptr[((i+mask%2)*(ancho+(mask%2)*2)*3)+((j+mask%2+1)*3) + 2]/9;
+        r_mean[7] = r_temp;
+
+        r_temp = ptr[((i+mask%2)*(ancho+(mask%2)*2)*3)+((j+mask%2)*3) + 2]/9;
+        r_mean[8] = r_temp;
+
+        b_temp = 0;
+        g_temp = 0;
+        r_temp = 0;
+
+        for (int k = 0; k < 9; k++){
+          b_temp += b_mean[k];
+          g_temp += g_mean[k];
+          r_temp += r_mean[k];
+        }
+
+        fputc(b_temp, outputImage);
+        fputc(g_temp, outputImage);
+        fputc(r_temp, outputImage);
       }
       fputc(p[0], outputImage);
       fputc(p[1], outputImage);
